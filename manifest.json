@@ -1,0 +1,30 @@
+{
+
+    "description": "This extension checks npm packages for vulnerabilities against the SNYK Vuln DB",
+    "manifest_version": 2,
+    "name": "Snyk VulnCost (inofficial)",
+    "version": "0.1.0",
+    "icons": {
+      "16": "logo/logo-16x16.png",
+      "24": "logo/logo-24x24.png",
+      "48": "logo/logo-48x48.png",
+      "96": "logo/logo-96x96.png"
+    },
+    "browser_action": {
+        "browser_style": true,
+        "default_title": "Check",
+        "default_popup": "modal/modal.html"
+    },
+    "page_action": {
+        "browser_style": true
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "permissions": [
+        "tabs",
+	"https://snyk.io/test/*"
+    ]
+}

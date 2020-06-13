@@ -1,0 +1,28 @@
+{
+  "name": "webext-snyk-vulncost",
+  "version": "0.1.0",
+  "description": "Unofficial web extension to check packages on vulnerabilities",
+  "main": "index.js",
+  "scripts": {
+    "lint": "web-ext lint",
+    "start": "web-ext run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryuno-Ki/webext-snyk-vulncost.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ryuno-Ki/webext-snyk-vulncost/issues"
+  },
+  "homepage": "https://github.com/Ryuno-Ki/webext-snyk-vulncost#readme",
+  "devDependencies": {
+    "web-ext": "^4.2.0"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.6.0"
+  }
+}
