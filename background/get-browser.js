@@ -1,3 +1,9 @@
+/**
+ * Returns the detected browser
+ * 
+ * @memberof module:background
+ * @returns {string}
+ */
 function getBrowser () {
   var url
 

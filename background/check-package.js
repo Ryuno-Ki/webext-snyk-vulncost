@@ -1,9 +1,17 @@
 import getTestUrlForPackageName from './get-test-url-for-package-name'
 
-function checkPackage (data) {
-  var packageName, testUrl
+/**
+ * Checks a package against SNYK API.
+ * 
+ * @async
+ * @memberof module:background
+ * @requires module:background.getTestUrlForPackageName
+ * @param {string} packageName - Name of the package to check
+ * @returns {Promise<{}>}
+ */
+function checkPackage (packageName) {
+  var testUrl
 
-  packageName = data.packageName
   testUrl = getTestUrlForPackageName(packageName)
   return window.fetch(testUrl).then(function (response) { return response.json() })
 }

@@ -1,5 +1,12 @@
 import getBrowser from './get-browser'
 
+/**
+ * Builds the UTM Parameters of an URL
+ * 
+ * @memberof module:background
+ * @requires module:background.getBrowser
+ * @returns {string}
+ */
 function getUtmParameters () {
   var browser
 
