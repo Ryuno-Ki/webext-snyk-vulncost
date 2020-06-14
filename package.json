@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "lint": "web-ext lint",
+    "prestart": "npm run build",
     "start": "web-ext run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -5,6 +5,10 @@ import { terser } from 'rollup-plugin-terser'
 export default [{
   input: 'background/index.js',
   output: [{
+    file: 'dist/background.js',
+    format: 'iife',
+    name: 'vulncost'
+  }, {
     file: 'dist/background.umd.js',
     format: 'umd',
     name: 'vulncost'
