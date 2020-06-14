@@ -5,7 +5,7 @@ function checkPackage (data) {
 
   packageName = data.packageName
   testUrl = getTestUrlForPackageName(packageName)
-  return fetch(testUrl).then(function (response) { return response.json() })
+  return window.fetch(testUrl).then(function (response) { return response.json() })
 }
 
 export default checkPackage

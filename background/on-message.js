@@ -1,4 +1,4 @@
-import checkPackage from './check-package'
+import handleCheckPackage from './handle-check-package'
 
 function onMessage (request, sender, sendResponse) {
   var isAsync
@@ -7,10 +7,7 @@ function onMessage (request, sender, sendResponse) {
 
   switch (request.type) {
     case 'check-package':
-      checkPackage(request.data)
-        .then(function (report) {
-          sendResponse(report)
-        })
+      handleCheckPackage(request, sendResponse)
       isAsync = true
       break
     default:

@@ -8,7 +8,7 @@
     "lint": "web-ext lint",
     "prestart": "npm run build",
     "start": "web-ext run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha --require babel-core/register --reporter tap test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,19 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.0.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "jsdom": "^16.2.2",
     "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "proxyquire": "^2.1.3",
     "rollup": "^2.16.1",
     "rollup-plugin-terser": "^6.1.0",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
     "web-ext": "^4.2.0"
   },
   "dependencies": {
