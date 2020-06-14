@@ -6,8 +6,9 @@ import { terser } from 'rollup-plugin-terser'
 const copyOptions = {
   targets: [
     { src: './src/logo', dest: './dist' },
-    { src: './src/modal', dest: './dist' },
-    { src: './src/manifest.json', dest: './dist/' }
+    { src: './src/manifest.json', dest: './dist/' },
+    { src: './src/modal/*.css', dest: './dist/modal' },
+    { src: './src/modal/*.html', dest: './dist/modal' },
   ]
 }
 
@@ -16,13 +17,33 @@ export default [{
   output: [{
     file: './dist/background.js',
     format: 'iife',
-    name: 'vulncost'
+    name: 'vulncost_background'
   }, {
     file: './dist/background.umd.js',
     format: 'umd',
-    name: 'vulncost'
+    name: 'vulncost_background'
   }, {
     file: './dist/background.es6.js',
+    format: 'es'
+  }],
+  plugins: [
+    resolve(),
+    commonjs(),
+    terser(),
+    copy(copyOptions)
+  ]
+}, {
+  input: './src/modal/index.js',
+  output: [{
+    file: './dist/modal/modal.js',
+    format: 'iife',
+    name: 'vulncost_modal'
+  }, {
+    file: './dist/modal/modal.umd.js',
+    format: 'umd',
+    name: 'vulncost_modal'
+  }, {
+    file: './dist/modal/modal.es6.js',
     format: 'es'
   }],
   plugins: [

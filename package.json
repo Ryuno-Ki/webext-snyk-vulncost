@@ -12,7 +12,9 @@
     "lint:js": "standard background/*.js",
     "prestart": "npm run build",
     "start": "web-ext -s ./dist run",
-    "test": "nyc mocha --require babel-core/register --reporter tap ./test/**/*.spec.js"
+    "test": "npm run test:unit",
+    "test:unit": "mocha --require babel-core/register --reporter tap ./test/**/*.spec.js",
+    "test:unit:coverage": "nyc mocha --require babel-core/register --reporter tap ./test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -46,6 +48,7 @@
     "rollup-plugin-terser": "^6.1.0",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
+    "sinon-chrome": "^3.0.1",
     "standard": "^14.3.4",
     "web-ext": "^4.2.0"
   },

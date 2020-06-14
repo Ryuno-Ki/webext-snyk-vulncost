@@ -1,12 +1,10 @@
 const chai = require('chai')
-const proxyquire = require('proxyquire')
+const proxyquire = require('proxyquire').noCallThru()
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
 const onMessage = proxyquire('../../src/background/on-message', {
-    './handle-check-package': {
-        default: (request, cb) => cb({})
-    }
+    './handle-check-package': (request, cb) => cb({})
 }).default
 
 chai.use(sinonChai)

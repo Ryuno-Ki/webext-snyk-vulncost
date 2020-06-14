@@ -10,17 +10,11 @@ import handleCheckPackage from './handle-check-package'
  * @param {module:background.WebExtensionResponse} sendResponse 
  */
 function onMessage (request, sender, sendResponse) {
-  var isAsync
+  let isAsync = false
 
-  isAsync = false
-
-  switch (request.type) {
-    case 'check-package':
-      handleCheckPackage(request, sendResponse)
-      isAsync = true
-      break
-    default:
-      // Do nothing
+  if (request.type === 'check-package') {
+    handleCheckPackage(request, sendResponse)
+    isAsync = true
   }
   return isAsync
 }

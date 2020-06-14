@@ -1,12 +1,10 @@
 const chai = require('chai')
-const proxyquire = require('proxyquire')
+const proxyquire = require('proxyquire').noCallThru()
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
 const handleCheckPackage = proxyquire('../../src/background/handle-check-package', {
-    './check-package': {
-        default: () => Promise.resolve({})
-    }
+    './check-package': () => Promise.resolve({})
 }).default
 
 chai.use(sinonChai)
@@ -31,4 +29,3 @@ describe('handleCheckPackage', function () {
         })
     })
 })
- 

@@ -1,12 +1,10 @@
 const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const jsdom = require('jsdom')
-const proxyquire = require('proxyquire')
+const proxyquire = require('proxyquire').noCallThru()
 
 const checkPackage = proxyquire('../../src/background/check-package', {
-    './get-test-url-for-package-name': {
-        default: () => ''
-    }
+    './get-test-url-for-package-name': () => ''
 }).default
 
 chai.use(chaiAsPromised)
@@ -24,7 +22,6 @@ describe('checkPackage', () => {
         }
 
         setResponse(expected)
-        // Fails over global `browser` being undefined + should avoid making actual API request!
         expect(checkPackage(mockData)).to.eventually.equal(expected)
     })
 })

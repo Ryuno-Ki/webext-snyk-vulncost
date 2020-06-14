@@ -1,4 +1,5 @@
-import 'webextension-polyfill'
+import browser from 'webextension-polyfill'
+
 import onMessage from './on-message'
 
 /**
@@ -44,4 +45,4 @@ import onMessage from './on-message'
  *     getTestUrlForPackageName->>checkPackage: built URL with UTM parameters
  *     checkPackage->>handleCheckPackage: Make request
  */
-window.browser.runtime.onMessage.addListener(onMessage)
+browser.runtime.onMessage.addListener(onMessage)

@@ -15,12 +15,9 @@
         "default_title": "Check",
         "default_popup": "./modal/modal.html"
     },
-    "page_action": {
-        "browser_style": true
-    },
     "background": {
         "scripts": [
-            "./background.js"
+            "./background.umd.js"
         ]
     },
     "permissions": [

@@ -1,23 +1,41 @@
 const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
-const jsdom = require('jsdom')
+const proxyquire = require('proxyquire').noCallThru()
 
-const getBrowser = require('../../src/background/get-browser').default
-const { JSDOM } = jsdom
+const browser = {
+    runtime: {
+        getURL: () => 'unknown://proto.col/'
+    }
+}
+
+const getBrowser = proxyquire('../../src/background/get-browser', {
+    'webextension-polyfill': browser
+}).default
 
 chai.use(chaiAsPromised)
 const expect = chai.expect
 
-describe('getBrowser', () => {
-    describe('when browser is unknown', () => {
-        it('should return "browser"', () => {
-            setURL('chrome-extension://some.string')
+describe('getBrowser', function () {
+    beforeEach(function () {
+        global.browser = browser
+    })
+
+    describe('when browser is unknown', function () {
+        it('should return "browser"', function () {
+            setURL('unknown://proto.col')
             expect(getBrowser()).to.equal('browser')
         })
     })
 
-    describe('when browser is Firefox', () => {
-        it('should return "firefox', () => {
+    describe('when browser is Chrome', function () {
+        it('should return "chrome"', function () {
+            setURL('chrome-extension://some.string')
+            expect(getBrowser()).to.equal('chrome')
+        })
+    })
+
+    describe('when browser is Firefox', function () {
+        it('should return "firefox', function () {
             setURL('moz-extension://foo.bar/')
             expect(getBrowser()).to.equal('firefox')
         })
@@ -25,11 +43,5 @@ describe('getBrowser', () => {
 })
 
 function setURL (url) {
-    const { window } = new JSDOM()
-    global.window = window
-    global.window.browser = {
-        runtime: {
-            getURL: () => url
-        }
-    }
+    global.browser.runtime.getURL = () => url
 }

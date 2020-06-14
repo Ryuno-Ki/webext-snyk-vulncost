@@ -1,6 +1,9 @@
 const chai = require('chai')
+const proxyquire = require('proxyquire').noCallThru()
 
-const getTestUrlForPackageName = require('../../src/background/get-test-url-for-package-name').default
+const getTestUrlForPackageName = proxyquire('../../src/background/get-test-url-for-package-name', {
+    './get-utm-parameters': () => ''
+}).default
 
 const expect = chai.expect
 

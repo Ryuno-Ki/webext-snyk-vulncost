@@ -1,6 +1,9 @@
 const chai = require('chai')
+const proxyquire = require('proxyquire').noCallThru()
 
-const getUtmParameters = require('../../src/background/get-utm-parameters').default
+const getUtmParameters = proxyquire('../../src/background/get-utm-parameters', {
+    './get-browser': () => 'browser'
+}).default
 
 const expect = chai.expect
 
@@ -12,4 +15,3 @@ describe('getUtmParameters', () => {
         expect(utm).to.contain('utm_campaign')
     })
 })
- 
