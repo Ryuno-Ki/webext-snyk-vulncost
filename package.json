@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "docs": "jsdoc -c .jsdoc.config.json -d ./docs -p ./package.json -R README.md -t ./node_modules/ink-docstrap/template -r background",
+    "docs": "jsdoc -c .jsdoc.config.json -d ./docs -p ./package.json -R README.md -t ./node_modules/ink-docstrap/template -r src",
     "docs:publish": "gh-pages -d ./docs",
     "lint": "npm run lint:ext && npm run lint:js",
     "lint:ext": "web-ext -s ./dist lint",
