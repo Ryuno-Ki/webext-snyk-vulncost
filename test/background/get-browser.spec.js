@@ -2,7 +2,7 @@ const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const jsdom = require('jsdom')
 
-const getBrowser = require('../../background/get-browser').default
+const getBrowser = require('../../src/background/get-browser').default
 const { JSDOM } = jsdom
 
 chai.use(chaiAsPromised)

@@ -3,7 +3,7 @@ const chaiAsPromised = require('chai-as-promised')
 const jsdom = require('jsdom')
 const proxyquire = require('proxyquire')
 
-const checkPackage = proxyquire('../../background/check-package', {
+const checkPackage = proxyquire('../../src/background/check-package', {
     './get-test-url-for-package-name': {
         default: () => ''
     }

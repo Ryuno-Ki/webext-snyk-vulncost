@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const getTestUrlForPackageName = require('../../background/get-test-url-for-package-name').default
+const getTestUrlForPackageName = require('../../src/background/get-test-url-for-package-name').default
 
 const expect = chai.expect
 

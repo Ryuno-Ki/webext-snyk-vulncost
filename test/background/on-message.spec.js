@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
-const onMessage = proxyquire('../../background/on-message', {
+const onMessage = proxyquire('../../src/background/on-message', {
     './handle-check-package': {
         default: (request, cb) => cb({})
     }

@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 
-const handleCheckPackage = proxyquire('../../background/handle-check-package', {
+const handleCheckPackage = proxyquire('../../src/background/handle-check-package', {
     './check-package': {
         default: () => Promise.resolve({})
     }
@@ -18,7 +18,11 @@ describe('handleCheckPackage', function () {
     })
 
     it('should check the package and send a response', function (done) {
-        const mockRequest = {}
+        const mockRequest = {
+            data: {
+                packageName: ''
+            }
+        }
         const mockSendResponse = sinon.spy()
         const response = handleCheckPackage(mockRequest, mockSendResponse)
         response.then(() => {

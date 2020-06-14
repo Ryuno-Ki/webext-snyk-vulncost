@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const getUtmParameters = require('../../background/get-utm-parameters').default
+const getUtmParameters = require('../../src/background/get-utm-parameters').default
 
 const expect = chai.expect
 
