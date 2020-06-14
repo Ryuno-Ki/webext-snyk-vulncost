@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "lint": "web-ext lint",
+    "lint": "npm run lint:ext && npm run lint:js",
+    "lint:ext": "web-ext lint",
+    "lint:js": "standard background/*.js",
     "prestart": "npm run build",
     "start": "web-ext run",
     "test": "nyc mocha --require babel-core/register --reporter tap test/**/*.spec.js"
@@ -37,6 +39,7 @@
     "rollup-plugin-terser": "^6.1.0",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
+    "standard": "^14.3.4",
     "web-ext": "^4.2.0"
   },
   "dependencies": {
