@@ -1,3 +1,4 @@
+import 'webextension-polyfill'
 import onMessage from './on-message'
 
 /**
