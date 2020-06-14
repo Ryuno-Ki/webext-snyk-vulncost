@@ -1,6 +1,6 @@
 {
   "name": "webext-snyk-vulncost",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial web extension to check packages on vulnerabilities",
   "main": "index.js",
   "scripts": {
