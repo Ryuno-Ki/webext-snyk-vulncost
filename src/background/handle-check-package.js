@@ -10,6 +10,8 @@ import checkPackage from './check-package'
  * @param {module:background.WebExtensionResponse} sendResponse 
  */
 async function handleCheckPackage (request, sendResponse) {
+  // TODO: encodeURIComponent packageName!
+  // TODO: Check for length > 0
   const report = await checkPackage(request.data.packageName)
   return sendResponse(report)
 }
