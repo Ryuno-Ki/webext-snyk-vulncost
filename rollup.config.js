@@ -3,6 +3,8 @@ import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import { terser } from 'rollup-plugin-terser'
 
+// TODO: Copy webextension-polyfill over to a vendor directory and point
+// manifest.json to it. This way, easing unit testing
 const copyOptions = {
   targets: [
     { src: './src/logo', dest: './dist' },
