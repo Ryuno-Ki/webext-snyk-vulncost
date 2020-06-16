@@ -13,17 +13,41 @@ import handleResponse from './handle-response'
  * @param {module:modal.FormData} formData 
  */
 function sendFormData (formData) {
-  const payload = {
-    type: 'check-package',
-    data: {
-      packageName: formData.packageName
+  Object.keys(formData).forEach((key) => {
+    const data = {
+      packageName: key,
+      packageVersion: formData[ key ]
     }
-  }
 
-  browser.runtime
-    .sendMessage(payload)
-    .then(handleResponse)
-    .catch(handleError)
+    const payload = {
+      type: 'check-package',
+      data,
+    }
+
+    updateStatus(key)
+
+    browser.runtime
+      .sendMessage(payload)
+      .then(handleResponse)
+      .catch(handleError)
+  })
 }
 
+function updateStatus (packageName) {
+  let element
+  const selector = `[id="${packageName}"]`
+  try {
+    element = document.querySelector(selector)
+  } catch (exc) {
+    console.error(exc)
+    return
+  }
+
+  if (element) {
+    element.parentElement.querySelector('.report').textContent = `
+      is checked
+    `
+  }
+}
+ 
 export default sendFormData

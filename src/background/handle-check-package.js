@@ -10,10 +10,25 @@ import checkPackage from './check-package'
  * @param {module:background.WebExtensionResponse} sendResponse 
  */
 async function handleCheckPackage (request, sendResponse) {
-  // TODO: encodeURIComponent packageName!
+  let report
+  const packageName = request.data.packageName
+  const packageVersion = request.data.packageVersion
+  const packageWithVersion = `${packageName}@${packageVersion}`
   // TODO: Check for length > 0
-  const report = await checkPackage(request.data.packageName)
-  return sendResponse(report)
+  report = await checkPackage(packageWithVersion)
+  try {
+    // Could be HTML or JSON
+    report = JSON.parse(report)
+  } catch (exc) {
+    console.debug(packageWithVersion)
+    console.error(exc)
+    report = {}
+  }
+  return sendResponse({
+    packageName,
+    packageVersion,
+    report,
+  })
 }
 
 export default handleCheckPackage

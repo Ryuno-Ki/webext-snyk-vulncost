@@ -13,7 +13,9 @@ function buildFormData (formElements) {
       return formElement.nodeName.toLowerCase() === 'input'
     }))
     .forEach(function (formElement) {
-      formData[ formElement.id ] = formElement.value
+      // Strip everything until the first digit
+      const version = formElement.value.replace(/^\D*/, '')
+      formData[ formElement.id ] = version
     })
 
   return formData

@@ -1,7 +1,6 @@
 import browser from 'webextension-polyfill'
 
 import onMessage from './on-message'
-import updateActiveTab from './tab-activity'
 
 /**
  * Sets up background handlers
@@ -47,14 +46,3 @@ import updateActiveTab from './tab-activity'
  *     checkPackage->>handleCheckPackage: Make request
  */
 browser.runtime.onMessage.addListener(onMessage)
-
-// Listen to tab URL changes
-browser.tabs.onUpdated.addListener(updateActiveTab)
-
-// Listen to tab-switching
-browser.tabs.onActivated.addListener(updateActiveTab)
-
-// Listen to window-switching
-browser.windows.onFocusChanged.addListener(updateActiveTab)
-
-updateActiveTab()

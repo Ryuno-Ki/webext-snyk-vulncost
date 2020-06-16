@@ -1,7 +1,7 @@
 import browser from 'webextension-polyfill'
 
+import fetchPackageJson from './fetch-package-json'
 import filterForGithubUrls from './filter-for-github-urls'
-import queryGithub from './query-github'
 
 /**
  * Updates internal reference to the active tab
@@ -9,9 +9,15 @@ import queryGithub from './query-github'
  * @async
  * @param {external:tabs} tabs 
  */
-async function updateActiveTab (tabs) {
+async function updateActiveTab () {
     const currentTabs = await browser.tabs.query({ active: true, currentWindow: true })
-    const githubUrls = filterForGithubUrls(currentTabs)
+    let githubUrls
+    try {
+        githubUrls = filterForGithubUrls(currentTabs)
+    } catch (exc) {
+        console.error(exc)
+        githubUrls = []
+    }
 
     if (githubUrls.length > 0) {
         const githubUrl = githubUrls[0]
@@ -20,16 +26,5 @@ async function updateActiveTab (tabs) {
         console.log(packageJson)
     }
 }
-
-async function fetchPackageJson(githubUrl) {
-    if (fetchPackageJson._cache[ githubUrl ]) {
-        return fetchPackageJson._cache[ githubUrl ]
-    }
-
-    const packageJson = await queryGithub(githubUrl)
-    fetchPackageJson._cache[ githubUrl ] = packageJson
-    return packageJson
-}
-fetchPackageJson._cache = {}
 
 export default updateActiveTab

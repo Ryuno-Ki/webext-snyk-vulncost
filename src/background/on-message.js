@@ -1,4 +1,5 @@
 import handleCheckPackage from './handle-check-package'
+import handleFetchPackageJson from './handle-fetch-package-json'
 
 /**
  * Event handler for incoming messages.
@@ -14,6 +15,11 @@ function onMessage (request, sender, sendResponse) {
 
   if (request.type === 'check-package') {
     handleCheckPackage(request, sendResponse)
+    isAsync = true
+  }
+
+  if (request.type === 'fetch-package-json') {
+    handleFetchPackageJson(request, sendResponse)
     isAsync = true
   }
   return isAsync
