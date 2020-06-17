@@ -5,23 +5,23 @@ import handleResponse from './handle-response'
 
 /**
  * Submits the form data to the background process.
- * 
+ *
  * @memberof module:modal
  * @async
  * @requires module:modal.handleError
  * @requires module:modal.handleResponse
- * @param {module:modal.FormData} formData 
+ * @param {module:modal.FormData} formData
  */
 function sendFormData (formData) {
   Object.keys(formData).forEach((key) => {
     const data = {
       packageName: key,
-      packageVersion: formData[ key ]
+      packageVersion: formData[key]
     }
 
     const payload = {
       type: 'check-package',
-      data,
+      data
     }
 
     updateStatus(key)
@@ -49,5 +49,5 @@ function updateStatus (packageName) {
     `
   }
 }
- 
+
 export default sendFormData

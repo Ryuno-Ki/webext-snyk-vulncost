@@ -4,7 +4,7 @@ import onMessage from './on-message'
 
 /**
  * Sets up background handlers
- * 
+ *
  * @module background
  * @requires module:background.onMessage
  */
@@ -14,20 +14,20 @@ import onMessage from './on-message'
  * @memberof module:background
  * @static
  * @listens module:modal~message
- * 
+ *
  * @mermaid
  *   graph TD;
  *     id1((Start))
  *     id2((Fin))
  *     id3{"Is request.type == 'check-package'?"}
- * 
+ *
  *     id1 --> onMessage;
  *     onMessage --- id3;
  *     id3-- "yes" -->handleCheckPackage;
  *     handleCheckPackage -.-> sendResponse;
  *     sendResponse --> id2;
  *     id3-- "no" -->id2;
- * 
+ *
  * @mermaid
  *   sequenceDiagram
  *     participant handleCheckPackage
@@ -35,7 +35,7 @@ import onMessage from './on-message'
  *     participant getTestUrlForPackageName
  *     participant getUtmParameters
  *     participant getBrowser
- * 
+ *
  *     handleCheckPackage->>checkPackage: unpacked request object
  *     checkPackage->>getTestUrlForPackageName: delegate URL building
  *     getTestUrlForPackageName->>getUtmParameters: delegate UTM parameter

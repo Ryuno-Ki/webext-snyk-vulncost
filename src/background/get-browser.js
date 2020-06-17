@@ -2,7 +2,7 @@ import browser from 'webextension-polyfill'
 
 /**
  * Returns the detected browser
- * 
+ *
  * @memberof module:background
  * @returns {string}
  */

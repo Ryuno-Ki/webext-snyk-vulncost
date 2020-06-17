@@ -9,7 +9,7 @@
     "docs:publish": "gh-pages -d ./docs",
     "lint": "npm run lint:ext && npm run lint:js",
     "lint:ext": "web-ext -s ./dist lint",
-    "lint:js": "standard background/*.js",
+    "lint:js": "standard src/**/*.js",
     "prestart": "npm run build",
     "start": "web-ext -s ./dist run",
     "test": "npm run test:unit",

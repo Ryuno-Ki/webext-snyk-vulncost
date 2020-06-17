@@ -1,8 +1,8 @@
 /**
  * Updates the UI with report information.
- * 
+ *
  * @memberof module:modal
- * @param {{}} info 
+ * @param {{}} info
  */
 function updateReport (info) {
   // const selector = `[id="${info.packageName}"][value="${info.packageVersion}"]`

@@ -3,7 +3,7 @@ import onSubmit from './on-submit'
 
 /**
  * Sets up event listener on load
- * 
+ *
  * @memberof module:modal
  * @requires module:modal.onSubmit
  * @listens module:modal.submit

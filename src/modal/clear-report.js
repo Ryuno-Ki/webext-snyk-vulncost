@@ -1,6 +1,6 @@
 /**
  * Clears the report part of the modal.
- * 
+ *
  * @memberof module:modal
  */
 function clearReport () {

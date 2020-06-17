@@ -1,8 +1,8 @@
 /**
  * Handles error case of background communication.
- * 
+ *
  * @memberof module:modal
- * @param {{}} error 
+ * @param {{}} error
  */
 function handleError (error) {
   console.error(`Error ${error}`)

@@ -4,12 +4,12 @@ import sendFormData from './send-form-data'
 
 /**
  * Handles form submit event
- * 
+ *
  * @memberof module:modal
  * @requires module:modal.clearReport
  * @requires module:modal.buildFormData
  * @requires module:modal.sendFormData
- * @param {external:FormSubmitEvent} event 
+ * @param {external:FormSubmitEvent} event
  */
 function onSubmit (event) {
   event.preventDefault()

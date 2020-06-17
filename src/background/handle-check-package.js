@@ -2,12 +2,12 @@ import checkPackage from './check-package'
 
 /**
  * Unpacks a request to check the package contained within.
- * 
+ *
  * @memberof module:background
  * @requires module:background.checkPackage
  * @async
- * @param {module:background.WebExtensionRequest} request 
- * @param {module:background.WebExtensionResponse} sendResponse 
+ * @param {module:background.WebExtensionRequest} request
+ * @param {module:background.WebExtensionResponse} sendResponse
  */
 async function handleCheckPackage (request, sendResponse) {
   let report
@@ -27,7 +27,7 @@ async function handleCheckPackage (request, sendResponse) {
   return sendResponse({
     packageName,
     packageVersion,
-    report,
+    report
   })
 }
 

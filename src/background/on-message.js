@@ -3,12 +3,12 @@ import handleFetchPackageJson from './handle-fetch-package-json'
 
 /**
  * Event handler for incoming messages.
- * 
+ *
  * @memberof module:background
  * @requires module:background.handleCheckPackage
- * @param {module:background.WebExtensionRequest} request 
+ * @param {module:background.WebExtensionRequest} request
  * @param {*} sender
- * @param {module:background.WebExtensionResponse} sendResponse 
+ * @param {module:background.WebExtensionResponse} sendResponse
  */
 function onMessage (request, sender, sendResponse) {
   let isAsync = false

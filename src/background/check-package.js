@@ -2,7 +2,7 @@ import getTestUrlForPackageName from './get-test-url-for-package-name'
 
 /**
  * Checks a package against SNYK API.
- * 
+ *
  * @async
  * @memberof module:background
  * @requires module:background.getTestUrlForPackageName
