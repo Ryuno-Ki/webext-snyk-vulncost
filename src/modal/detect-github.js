@@ -1,5 +1,3 @@
-import browser from 'webextension-polyfill'
-
 import onSubmit from './on-submit'
 
 function handleResponse (response) {
@@ -32,7 +30,7 @@ function handleError (error) {
 }
 
 async function detectGithub () {
-  const currentTabs = await browser.tabs.query({ active: true, currentWindow: true })
+  const currentTabs = await window.browser.tabs.query({ active: true, currentWindow: true })
   const githubUrls = currentTabs
     .map((tab) => tab.url)
     .map((url) => new URL(url))
@@ -57,7 +55,7 @@ async function detectGithub () {
       }
     }
 
-    browser.runtime
+    window.browser.runtime
       .sendMessage(payload)
       .then(handleResponse)
       .catch(handleError)

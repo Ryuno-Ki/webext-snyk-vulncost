@@ -19,9 +19,9 @@ function onLoad () {
 }
 
 function monkeyPatchInput (formSubmitEvent) {
-  const elements = formSubmitEvent.target.elements.map((element) => {
+  const elements = Array.from(formSubmitEvent.target.elements).map((element) => {
     let version = 'latest'
-    if (element.value.contains('@') && element.value.charAt(0) !== '@') {
+    if (element.value.includes('@') && element.value.charAt(0) !== '@') {
       version = element.value.split('@')[1]
     }
 

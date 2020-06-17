@@ -1,5 +1,3 @@
-import browser from 'webextension-polyfill'
-
 import fetchPackageJson from './fetch-package-json'
 import filterForGithubUrls from './filter-for-github-urls'
 
@@ -10,7 +8,7 @@ import filterForGithubUrls from './filter-for-github-urls'
  * @param {external:tabs} tabs
  */
 async function updateActiveTab () {
-  const currentTabs = await browser.tabs.query({ active: true, currentWindow: true })
+  const currentTabs = await window.browser.tabs.query({ active: true, currentWindow: true })
   let githubUrls
   try {
     githubUrls = filterForGithubUrls(currentTabs)

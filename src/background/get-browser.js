@@ -1,5 +1,3 @@
-import browser from 'webextension-polyfill'
-
 /**
  * Returns the detected browser
  *
@@ -9,7 +7,7 @@ import browser from 'webextension-polyfill'
 function getBrowser () {
   var url
 
-  url = browser.runtime.getURL('background.js')
+  url = window.browser.runtime.getURL('background.js')
   console.debug('Browser detected', url)
   if (new URL(url).protocol === 'moz-extension:') {
     return 'firefox'

@@ -1,5 +1,3 @@
-import browser from 'webextension-polyfill'
-
 import handleError from './handle-error'
 import handleResponse from './handle-response'
 
@@ -26,7 +24,7 @@ function sendFormData (formData) {
 
     updateStatus(key)
 
-    browser.runtime
+    window.browser.runtime
       .sendMessage(payload)
       .then(handleResponse)
       .catch(handleError)
@@ -44,9 +42,14 @@ function updateStatus (packageName) {
   }
 
   if (element) {
-    element.parentElement.querySelector('.report').textContent = `
-      is checked
-    `
+    try {
+      element.parentElement.querySelector('.report').textContent = `
+        is checked
+      `
+    } catch (exc) {
+      console.error(exc)
+      return
+    }
   }
 }
 
