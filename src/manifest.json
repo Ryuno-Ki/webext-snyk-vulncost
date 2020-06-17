@@ -17,6 +17,7 @@
     },
     "background": {
         "scripts": [
+            "./modal/vendor/browser-polyfill.min.js",
             "./background.umd.js"
         ]
     },

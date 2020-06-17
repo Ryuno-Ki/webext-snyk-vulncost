@@ -3,16 +3,29 @@ import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import { terser } from 'rollup-plugin-terser'
 
-// TODO: Copy webextension-polyfill over to a vendor directory and point
-// manifest.json to it. This way, easing unit testing
 const copyOptions = {
   targets: [
+    {
+      src: './node_modules/webextension-polyfill/dist/browser-polyfill.min.js',
+      dest: './dist/modal/vendor'
+    },
+    {
+      src: './node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map',
+      dest: './dist/modal/vendor'
+    },
     { src: './src/logo', dest: './dist' },
     { src: './src/manifest.json', dest: './dist/' },
     { src: './src/modal/*.css', dest: './dist/modal' },
     { src: './src/modal/*.html', dest: './dist/modal' },
   ]
 }
+
+const plugins = [
+  resolve(),
+  commonjs(),
+  terser(),
+  copy(copyOptions)
+]
 
 export default [{
   input: './src/background/index.js',
@@ -28,12 +41,7 @@ export default [{
     file: './dist/background.es6.js',
     format: 'es'
   }],
-  plugins: [
-    resolve(),
-    commonjs(),
-    terser(),
-    copy(copyOptions)
-  ]
+  plugins
 }, {
   input: './src/modal/index.js',
   output: [{
@@ -48,10 +56,5 @@ export default [{
     file: './dist/modal/modal.es6.js',
     format: 'es'
   }],
-  plugins: [
-    resolve(),
-    commonjs(),
-    terser(),
-    copy(copyOptions)
-  ]
+  plugins
 }]
